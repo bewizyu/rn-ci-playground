@@ -1,6 +1,6 @@
 = React Native CI Playground
 
-This application is a sample for testing CI Saas solutions
+This application is a sample for testing CI Saas solutions.
 
 == Get started
 
