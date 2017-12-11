@@ -38,6 +38,21 @@ workflows:
     - deploy-to-bitrise-io@1.3.7:
         inputs:
         - notify_user_groups: admins
+     - slack@2.6.3:
+            inputs:
+            - message: |-
+                $BITRISE_BUILD_URL
+
+                Commit $GIT_CLONE_COMMIT_HASH - $BITRISE_GIT_MESSAGE
+
+                Pour installer l'app c'est par ici ! $BITRISE_PUBLIC_INSTALL_PAGE_URL
+            - image_url: https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAduAAAAJDQwMjBiYjU1LWI5ZGQtNGVjNS05NjM4LTg2MzBlM2JjYTRiZA.png
+            - icon_url: https://pbs.twimg.com/profile_images/509277348965781504/VRskGFs5.jpeg
+            - from_username: 'RnCiPlayground #$BITRISE_BUILD_NUMBER'
+            - from_username_on_error: 'Pot Pourri Android #$BITRISE_BUILD_NUMBER'
+            - message_on_error: "$BITRISE_BUILD_URL\n\nCommit $GIT_CLONE_COMMIT_HASH -
+                $BITRISE_GIT_MESSAGE\n\nUne erreur est survenue. "
+            - webhook_url: https://hooks.slack.com/services/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
   primary:
     steps:
     - activate-ssh-key@3.1.1:
